@@ -1,6 +1,6 @@
 import express from "express";
-import { signupSchema } from "../middleware/validator/signup_validator";
-import { loginSchema } from "../middleware/validator/login_validator";
+import { signupSchema } from "../middleware/validator/signup_schema";
+import { loginSchema } from "../middleware/validator/login_schema";
 import { validateRequest } from 'zod-express-middleware';
 import { checkIfUserExists } from "../middleware/auth_middleware";
 import bcrypt from 'bcrypt';
@@ -9,8 +9,9 @@ import { users } from "../db/schema/users";
 import { eq } from "drizzle-orm";
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-const authRouter = express.Router();
 dotenv.config();
+
+const authRouter = express.Router();
 
 
 

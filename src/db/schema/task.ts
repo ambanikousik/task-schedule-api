@@ -4,7 +4,7 @@ import { users } from "./users";
 
 export const tasks = pgTable('tasks', {
   id: serial('id',).primaryKey(),
-  executionTime: timestamp('execution_time',),
+  executionTime: timestamp('execution_time',).notNull(),
   user: integer('user_id').references(() => users.id),
   executed: boolean('executed',).default(false),
   createdAt: timestamp('created_at',).defaultNow(),
