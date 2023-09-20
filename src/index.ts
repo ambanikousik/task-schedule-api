@@ -3,23 +3,14 @@ import { body, oneOf, validationResult } from 'express-validator';
 import compression from 'compression';
 import cron from 'node-cron';
 import dotenv from 'dotenv';
-import mongoose from "mongoose";
+import { dbConnect } from './db/database';
+import authRouter from './routes/auth_router';
 
 const app = express();
 dotenv.config();
 const port = process.env.PORT;
-const mongoUrl: string = process.env.MONGO_URL || "";
 
-mongoose.Promise = Promise;
-mongoose.connect(mongoUrl).then(() => {
-  console.log("Successfully connected to MongoDB Atlas!");
-})
-  .catch((error) => {
-    console.log("Unable to connect to MongoDB Atlas!");
-    console.error(error);
-  });
-mongoose.connection.on('error', (error: Error) => console.log(error));
-
+dbConnect();
 
 app.use(compression());
 
@@ -60,6 +51,9 @@ app.post('/', taskValidationRules, (req: Request, res: Response) => {
 
 });
 
+app.use(authRouter);
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+

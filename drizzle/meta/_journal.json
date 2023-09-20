@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1695193384505,
+      "tag": "0000_spooky_greymalkin",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1695198236359,
+      "tag": "0001_simple_starhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1695202680053,
+      "tag": "0002_bright_satana",
+      "breakpoints": true
+    }
+  ]
+}
